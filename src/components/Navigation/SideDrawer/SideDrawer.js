@@ -8,7 +8,10 @@ import Aux from '../../../hoc/Aux';
 
 const sideDrawer = (props) => {
 
-    let attachedClasses = props.open ? [classes.SideDrawer, classes.Open] : attachedClasses = [classes.SideDrawer, classes.Close];
+    let attachedClasses = [classes.SideDrawer, classes.Close]
+    if (props.open) {
+        attachedClasses = [classes.SideDrawer, classes.Open];
+    }
     
     return (
         <Aux>

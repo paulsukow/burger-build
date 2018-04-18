@@ -3,13 +3,17 @@ import React from 'react';
 import classes from './Input.css';
 
 const input = (props) => {
-    let inputElement = null;
     const inputClasses = [classes.InputElement]
-
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid)
     }
 
+    let validationErrorMessage = null;
+    if (props.invalid && props.touched) {
+        validationErrorMessage = <p>Please enter a valid {props.valueType}</p>;
+    }
+
+    let inputElement = null;
     switch ( props.elementType ) {
         case ( 'input' ):
             inputElement = <input 
@@ -54,6 +58,7 @@ const input = (props) => {
                 {props.label}
             </label>
             {inputElement}
+            {validationErrorMessage}
         </div>
     );
 };
